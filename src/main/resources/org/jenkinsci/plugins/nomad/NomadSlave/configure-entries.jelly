@@ -1,0 +1,21 @@
+<?jelly escape-by-default='true'?>
+
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+
+    <table width="100%">
+
+        <f:entry title="Labels" field="labelString">
+            <f:textbox/>
+        </f:entry>
+
+        <f:entry title="Number of executors" field="numExecutors">
+            <f:textbox/>
+        </f:entry>
+
+        <f:entry title="Idle termination time" field="idleTerminationInMinutes">
+            <f:textbox/>
+        </f:entry>
+
+    </table>
+
+</j:jelly>

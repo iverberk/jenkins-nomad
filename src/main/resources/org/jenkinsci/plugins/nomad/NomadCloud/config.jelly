@@ -1,0 +1,29 @@
+<?jelly escape-by-default='true'?>
+
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+
+  <f:entry title="Name" field="name" description="A unique name for this Nomad cloud">
+    <f:textbox/>
+  </f:entry>
+
+  <f:entry title="Nomad URL" field="nomadUrl" description="Nomad API URL [hostname:port]">
+    <f:textbox default="http://127.0.0.1:4646"/>
+  </f:entry>
+
+  <f:entry title="Jenkins Base URL" field="jenkinsUrl" description="Jenkins base URL">
+    <f:textbox default="${instance.getJenkinsUrl()}"/>
+  </f:entry>
+
+  <f:entry title="Jenkins Slave URL" field="slaveUrl" description="Jenkins slave URL">
+    <f:textbox default="${instance.getSlaveUrl()}"/>
+  </f:entry>
+
+  <f:validateButton title="Test connection" progress="Testing API connectivity..." method="testConnection" with="nomadUrl"/>
+
+  <f:entry title="Slave Templates">
+    <f:repeatable field="templates">
+      <st:include page="/org/jenkinsci/plugins/nomad/NomadSlaveTemplate/config.jelly" class="org.jenkinsci.plugins.nomad.NomadSlaveTemplate$DescriptorImpl"/>
+    </f:repeatable>
+  </f:entry>
+
+</j:jelly>

@@ -1,0 +1,53 @@
+<?jelly escape-by-default='true'?>
+
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+
+    <table width="100%">
+
+        <f:entry title="Cpu" field="cpu">
+            <f:textbox/>
+        </f:entry>
+
+        <f:entry title="Memory" field="memory">
+            <f:textbox/>
+        </f:entry>
+
+        <f:entry title="Labels" field="labels">
+            <f:textbox/>
+        </f:entry>
+
+        <f:entry title="Disk" field="disk">
+            <f:textbox/>
+        </f:entry>
+
+        <f:entry title="Region" field="region">
+            <f:textbox/>
+        </f:entry>
+
+        <f:entry title="Priority" field="priority">
+            <f:textbox/>
+        </f:entry>
+
+        <f:entry title="Idle termination time" field="idleTerminationInMinutes">
+            <f:textbox default="10" />
+        </f:entry>
+
+        <f:entry title="Workspace root" field="remoteFs">
+            <f:textbox/>
+        </f:entry>
+
+        <f:optionalBlock name="iamge" title="Use Docker driver" inline="true" checked="${instance.image != null}">
+            <f:entry title="Image">
+                <f:textbox name="image" field="image"/>
+            </f:entry>
+        </f:optionalBlock>
+
+        <f:entry title="">
+            <div align="right">
+                <f:repeatableDeleteButton />
+            </div>
+        </f:entry>
+
+    </table>
+
+</j:jelly>
