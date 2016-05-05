@@ -129,8 +129,7 @@ public class NomadCloud extends AbstractCloudImpl {
             LOGGER.log(Level.INFO, "Asking Nomad to schedule new Jenkins slave");
             nomad.startSlave(slaveName, template);
 
-            // Check scheduling succes
-
+            // Check scheduling success
             Callable<Boolean> callableTask = new Callable<Boolean>() {
                 public Boolean call() {
                     try {
@@ -166,10 +165,10 @@ public class NomadCloud extends AbstractCloudImpl {
     // Find the correct template for job
     public NomadSlaveTemplate getTemplate(Label label) {
         for (NomadSlaveTemplate t : templates) {
-            if(label == null && t.getLabelSet().size() != 0) {
+            if (label == null && !t.getLabelSet().isEmpty()) {
                 continue;
             }
-            if((label == null && t.getLabelSet().size() == 0) || (label != null && label.matches(t.getLabelSet()))) {
+            if ((label == null && t.getLabelSet().isEmpty()) || (label != null && label.matches(t.getLabelSet()))) {
                 return t;
             }
         }

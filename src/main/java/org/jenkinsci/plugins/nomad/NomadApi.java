@@ -8,6 +8,7 @@ import org.jenkinsci.plugins.nomad.Api.*;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public final class NomadApi {
@@ -40,7 +41,7 @@ public final class NomadApi {
 
             client.newCall(request).execute().body().close();
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, e.getMessage(), e);
         }
     }
 
@@ -55,7 +56,7 @@ public final class NomadApi {
         try {
             client.newCall(request).execute().body().close();
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, e.getMessage(), e);
         }
 
     }
@@ -75,7 +76,7 @@ public final class NomadApi {
         return driverConfig;
     }
 
-    private String buildSlaveJob(
+    String buildSlaveJob(
             String name,
             NomadSlaveTemplate template
     ) {

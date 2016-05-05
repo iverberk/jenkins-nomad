@@ -62,7 +62,7 @@ public class NomadSlaveTemplate implements Describable<NomadSlaveTemplate> {
     }
 
     protected Object readResolve() {
-        this.driver = this.image != "" ? "docker" : "java";
+        this.driver = !this.image.equals("") ? "docker" : "java";
         return this;
     }
 
