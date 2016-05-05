@@ -3,12 +3,8 @@ package org.jenkinsci.plugins.nomad;
 import hudson.Extension;
 import hudson.model.Descriptor;
 import hudson.model.Node;
-import hudson.model.Slave;
 import hudson.model.TaskListener;
 import hudson.slaves.*;
-import jenkins.model.Jenkins;
-import org.jvnet.localizer.ResourceBundleHolder;
-import org.kohsuke.args4j.Localizable;
 
 import java.io.IOException;
 import java.util.List;
